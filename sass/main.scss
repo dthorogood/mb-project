@@ -15,7 +15,7 @@ body {
   @include buttonGradient;
   border:1px solid $color15;
   border-radius:$radius;
-  box-shadow:inset 0px 1px 1px #dfffc2;
+  box-shadow:inset 0 1px 1px #dfffc2;
   color:$color8;
   display:block;
   height:65px;
@@ -76,7 +76,7 @@ main {
     #charts .chart-container {
       background:$color3;
       border-radius:$radius;
-      box-shadow: 0px 1px 4px 0px $color15;
+      box-shadow: 0 1px 4px 0 $color15;
       box-sizing:border-box;
       float:left;
       margin: 0 0 2%;
@@ -128,6 +128,18 @@ main {
               text-align:center;
             }
           }
+        }
+      }
+      a.edit-icon {
+        background:url(../images/pencil_icons.png) no-repeat 0 0;
+        height:17px;
+        padding:0;
+        position:absolute;
+        right:20px;
+        top:20px;
+        width:17px;
+        &:hover {
+          background-position:0 -17px;
         }
       }
       a {

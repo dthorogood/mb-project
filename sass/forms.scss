@@ -21,7 +21,7 @@ form {
     &[multiple] {
       background:$color8;
       height:110px;
-      padding:2px 0px 2px 8px;
+      padding:2px 0 2px 8px;
     }
   }
   label {
@@ -36,5 +36,9 @@ form {
     @media only screen and (min-width: $large-min) {
       width:25%;
     }
+  }
+  &.chart-form {
+    margin-top:-6px;
+    width:80%;
   }
 }

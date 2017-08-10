@@ -124,7 +124,7 @@ form {
     form select[multiple] {
       background: #fbfbf6;
       height: 110px;
-      padding: 2px 0px 2px 8px; }
+      padding: 2px 0 2px 8px; }
   form label {
     display: block;
     margin-bottom: 0.25rem; }
@@ -136,6 +136,9 @@ form {
     @media only screen and (min-width: 768px) {
       form#new-program-form {
         width: 25%; } }
+  form.chart-form {
+    margin-top: -6px;
+    width: 80%; }
 
 header {
   background: #ecf7f2;
@@ -335,7 +338,7 @@ body {
   /* IE6-9 */
   border: 1px solid #91b57c;
   border-radius: 5px;
-  box-shadow: inset 0px 1px 1px #dfffc2;
+  box-shadow: inset 0 1px 1px #dfffc2;
   color: #fbfbf6;
   display: block;
   height: 65px;
@@ -387,7 +390,7 @@ main {
     main #main-content #charts .chart-container, main #injected-content #charts .chart-container {
       background: #ffffff;
       border-radius: 5px;
-      box-shadow: 0px 1px 4px 0px #91b57c;
+      box-shadow: 0 1px 4px 0 #91b57c;
       box-sizing: border-box;
       float: left;
       margin: 0 0 2%;
@@ -430,6 +433,16 @@ main {
             main #main-content #charts .chart-container .total-monthly table tbody td.line, main #injected-content #charts .chart-container .total-monthly table tbody td.line {
               max-width: 25%;
               text-align: center; }
+      main #main-content #charts .chart-container a.edit-icon, main #injected-content #charts .chart-container a.edit-icon {
+        background: url(../images/pencil_icons.png) no-repeat 0 0;
+        height: 17px;
+        padding: 0;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        width: 17px; }
+        main #main-content #charts .chart-container a.edit-icon:hover, main #injected-content #charts .chart-container a.edit-icon:hover {
+          background-position: 0 -17px; }
       main #main-content #charts .chart-container a, main #injected-content #charts .chart-container a {
         color: #a0a093;
         display: block;

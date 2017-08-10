@@ -2,7 +2,7 @@
 var numCharts = 3;
 
 var resizeTimer;
-$(window).resize(function(e) {
+$(window).resize(function() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(function() {
         getPrograms();
@@ -12,9 +12,10 @@ $(window).resize(function(e) {
 // Inject the new program form
 function showNewProgramForm() {
     var url = "includes/new_program_form.php";
+    var contentContainer = $('#injected-content');
     $('#main-content').hide();
-    getData(url, injectContent, $('#injected-content'));
-    $('#injected-content').fadeIn();
+    getData(url, injectContent, contentContainer);
+    contentContainer.fadeIn();
     $('aside div').hide();
     $('aside div.cancel').fadeIn().css("display","inline-block");
 }
@@ -62,10 +63,10 @@ function getData(url, callback, trigger) {
 // Output the HTML for a chart container, then populate it with google charts.
 function displayGraphs(data) {
     $('#charts').html('');
-    $('#all-programs table tbody').html('');
+    $('#all-programs tbody').html('');
     $.each(data, function(i, item) {
         if (i < numCharts) {
-            $('#charts').append('<div class="chart-container" data-program-id="' + item.ProgramID + '"><div id="graph-' + item.ProgramID + '" class="chart"><h2>' + item.Name + '</h2><h3>Sales by month</h3><div id="chart-' + item.ProgramID + '"></div></div><div class="total-monthly">' +
+            $('#charts').append('<div class="chart-container" data-program-id="' + item.ProgramID + '"><div id="graph-' + item.ProgramID + '" class="chart"><h2>' + item.Name + '</h2><a href="#" onclick="toggleEditProgramName($(this)); return false;" class="edit-icon"></a><h3>Sales by month</h3><div id="chart-' + item.ProgramID + '"></div></div><div class="total-monthly">' +
                 '<table><thead>' +
                 '<tr><td>Total Monthly</td><td>Current</td><td>1-Year</td></tr>' +
                 '</thead><tbody>' +
@@ -170,6 +171,25 @@ function displayPricing(data, trigger) {
     output += "</thead></table><a href='#' onclick='$(this).closest(\".additional-data\").slideUp().siblings(\"a\").show(); return false;'>less</a>";
     trigger.hide();
     target.html(output).slideDown();
+}
+
+// UI for editing the program name. NOTE: doesn't actually edit the name, it just looks like it does.
+function toggleEditProgramName(trigger) {
+    var editable = trigger.siblings('h2');
+    var currentValue = editable.text();
+    if (editable.is(":visible")) {
+        editable.hide().after('<form class="chart-form"><input type=\"text\" placeholder=\"' + currentValue +'\"></form>');
+    }
+    else {
+        var form = editable.siblings('form');
+        var newValue = form.find('input').val();
+        if (newValue == "") {
+            newValue = currentValue;
+        }
+        editable.text(newValue).show();
+        form.remove();
+    }
+
 }
 
 // Table matching month names to their index
