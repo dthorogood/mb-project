@@ -1,0 +1,40 @@
+form {
+  font-size:14px;
+  h2 {
+    margin-bottom:1rem;
+  }
+  input[type=text], select, textarea {
+    -webkit-appearance: none;
+    background:$color8;
+    border:1px solid $color12;
+    border-radius:$radius;
+    box-sizing:border-box;
+    display:block;
+    line-height:30px;
+    margin-bottom:0.5rem;
+    padding:0 8px;
+    width:100%;
+  }
+  select {
+    background: url(../images/chevron-down.svg) no-repeat 97% 46% $color8;
+    background-size: auto 50%;
+    &[multiple] {
+      background:$color8;
+      height:110px;
+      padding:2px 0px 2px 8px;
+    }
+  }
+  label {
+    display:block;
+    margin-bottom:0.25rem;
+  }
+  &#new-program-form {
+    width:100%;
+    @media only screen and (min-width: $medium-min) {
+      width:50%;
+    }
+    @media only screen and (min-width: $large-min) {
+      width:25%;
+    }
+  }
+}
